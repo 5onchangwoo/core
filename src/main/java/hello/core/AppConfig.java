@@ -1,5 +1,7 @@
 package hello.core;
 
+import hello.core.discount.DiscountPolicy;
+import hello.core.discount.FixDiscountPolicy;
 import hello.core.discount.RateDiscountPolicy;
 import hello.core.member.MemberService;
 import hello.core.member.MemberServiceImpl;
@@ -16,13 +18,22 @@ import hello.core.order.OrderServiceImpl;
 
 public class AppConfig {
     public MemberService memberService(){
-        return new MemberServiceImpl(new MemoryMemberRepository());
+        return new MemberServiceImpl(memberRepository());
     }
+
+    private MemoryMemberRepository memberRepository() {
+        return new MemoryMemberRepository();
+    }
+    //중복되었던 memberRopository를 리팩토링 해주었다.
 
     public OrderService orderService(){
-        return new OrderServiceImpl(new MemoryMemberRepository(), new RateDiscountPolicy());
+        return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
 
+    public DiscountPolicy discountPolicy(){
+        return new FixDiscountPolicy();
+    }
+    //할인정책을 한눈에 확인할 수 있도록 하였다.
 }
 
 /*
