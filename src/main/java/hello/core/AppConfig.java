@@ -30,9 +30,8 @@ public class AppConfig {
         return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
 
-    public DiscountPolicy discountPolicy(){
-        return new FixDiscountPolicy();
-    }
+//    public DiscountPolicy discountPolicy(){ return new FixDiscountPolicy(); }
+    public DiscountPolicy discountPolicy(){ return new RateDiscountPolicy(); }
     //할인정책을 한눈에 확인할 수 있도록 하였다.
 }
 
