@@ -18,6 +18,7 @@ import org.springframework.context.annotation.Configuration;
  * 나머지 구현체들은 동작에만 집중할 수 있게 된다.
  */
 
+//이러한 방식으로 만드는 것을 팩토리 메서드라고 함.
 @Configuration //구성정보를 담당
 public class AppConfig {
 

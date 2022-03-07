@@ -18,3 +18,11 @@
     : 편리한 리소스조회(파일, 클래스패스, 외부 등에서 리소스를 관리하게 조회)
   -따라서 부가기능이 있는 ApplicationContecxt를 주로 사용함.
   -BeanFactory나 ApplicationContext를 스프링 컨테이너라 부름
+
+---다양한 설정 형식 지원 - 자바, XML등
+AnnotationConfig ApplicationContext -> AppConfig.class
+ : 스프링 부트의 등장으로 최근 많이 사용함.
+GenericXml ApplicationContext -> appConfig.xml
+ : 최근에는 스프링부트로인해 잘 사용하지 않음.
+ 컴파일 없이 빈 설정 정보를 변경할 수 있음
+Xxx ApplicationContext appConfig.xxx (사용자 지정 형식으로 사용가능)

@@ -1,0 +1,29 @@
+스프링 빈 설정 메타 정보 - BeanDefinition
+-스프링이 다양한 설정 형식을 지원할 수있는 이유
+  : BeanDefinition이라는 추상화가 있기 때문이다.
+    *XML을 읽어서 BeanDefinition을 만들면 된다.
+    *자바 코드를 읽어서 BeanDefinition을 만들면 된다.
+    *스프링 컨테이너는 자바 코드인지, XM인지 몰라도 된다. 오직 BeanDefinition만 알면 된다.
+-BeanDefinition을 설정 메타정보라 한다.
+    *@Bean, <bean>당 각각 하나씩 메타정보가 생성된다.
+-스프링 컨테이너는 이 메타정보를 기반으로 스프링 빈을 생성한다.
+
+[스프링 컨테이너] --의존--> <<interface>> BeanDefinition <--- AppConfig.class, appConfig.xml, appConfig.xxx
+
+-코드레벨
+1. AnnotationConfig ApplicationContext가
+    Annotated BeanDefinitionReader를 사용해서 AppCofig.class 읽고 설정 정보를 확인
+2. 확인한 내용을 토대로 BeanDefinition(빈 메타정보)를 생성함
+
+
+BeanDefinitaion
+    *BeanClassName: 생성할 빈의 클래스 명(자바 설정 처럼 패토리 역할의 빈을 사용하면 없음)
+    *factoryBeanName: 팩토리 역할의 빈을 사용할 경우의 이름(ex- appConfig)
+    *factoryMethodName: 빈을 생성할 팩토리 메서드 지정 (ex- memberService)
+    *Scope: 싱글톤(기본값)
+    *lazyInit: 스프링 컨테이너를 생성할 때 빈을 생성하는 것이 아니라,
+        실제 빈을 사용할 때 까지 최대한 생성을 지연 처리 하는 지여부
+    *InitMethodName: 빈을 생성하고, 의존 관계를 적용한 뒤에 호출되는 초기화 메서드 명
+    *DestoryMethodName: 빈의 생명주기가 끝나서 제거하기 직전에 호출되는 메서드 명
+    *Constructor arguments, Properties: 의존관계 주입에서 사용.
+        (자바 설정처럼 팩토리 역할의 빈을 사용하면 없음)
