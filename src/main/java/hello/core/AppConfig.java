@@ -19,28 +19,36 @@ import org.springframework.context.annotation.Configuration;
  */
 
 //이러한 방식으로 만드는 것을 팩토리 메서드라고 함.
-@Configuration //구성정보를 담당
+@Configuration //구성정보를 담당하는 것을 알림.
 public class AppConfig {
+
+    //@Bean memberService -> new MemoryMemberRepository()
+    //@Bean OrderService -> new MemoryMemberRepository()
 
     @Bean //각 메서드에 Bean을 붙이면 스프링 컨테이너에 등록됨.
     public MemberService memberService(){
+        System.out.println("AppConfig.memberService");
         return new MemberServiceImpl(memberRepository());
     }
 
     @Bean
     public MemoryMemberRepository memberRepository() {
+        System.out.println("AppConfig.memberRepository");
         return new MemoryMemberRepository();
     }
     //중복되었던 memberRopository를 리팩토링 해주었다.
 
     @Bean
     public OrderService orderService(){
+        System.out.println("AppConfig.orderService");
         return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
 
 //    public DiscountPolicy discountPolicy(){ return new FixDiscountPolicy(); }
     @Bean
-    public DiscountPolicy discountPolicy(){ return new RateDiscountPolicy(); }
+    public DiscountPolicy discountPolicy(){
+        System.out.println("AppConfig.discountPolicy");
+        return new RateDiscountPolicy(); }
     //할인정책을 한눈에 확인할 수 있도록 하였다.
 }
 
