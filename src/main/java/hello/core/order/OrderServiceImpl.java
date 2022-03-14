@@ -4,8 +4,10 @@ import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
 import hello.core.member.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-
+@Component
 public class OrderServiceImpl implements OrderService {
     //OrderService 의존
 
@@ -27,6 +29,7 @@ public class OrderServiceImpl implements OrderService {
      * 이를 관리해주는 설정 클래스를 따로 만들어야 함.
      * --> AppConfig
      **/
+    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;

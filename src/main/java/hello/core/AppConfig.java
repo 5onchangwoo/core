@@ -3,11 +3,13 @@ package hello.core;
 import hello.core.discount.DiscountPolicy;
 import hello.core.discount.FixDiscountPolicy;
 import hello.core.discount.RateDiscountPolicy;
+import hello.core.member.MemberRepository;
 import hello.core.member.MemberService;
 import hello.core.member.MemberServiceImpl;
 import hello.core.member.MemoryMemberRepository;
 import hello.core.order.OrderService;
 import hello.core.order.OrderServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -21,6 +23,11 @@ import org.springframework.context.annotation.Configuration;
 //이러한 방식으로 만드는 것을 팩토리 메서드라고 함.
 @Configuration //구성정보를 담당하는 것을 알림.
 public class AppConfig {
+
+    //만약 @Configuration을 사용안하면
+    //@Autowired MemberRepository memberRepository; 입력시 DI주입해줄 수 있음.
+
+
 
     //@Bean memberService -> new MemoryMemberRepository()
     //@Bean OrderService -> new MemoryMemberRepository()

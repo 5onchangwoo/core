@@ -1,11 +1,18 @@
 package hello.core.member;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class MemberServiceImpl implements MemberService {
                                 //인터페이스 의존
     //private final MemberRepository memberRepository = new MemoryMemberRepository();
     //구현체도 의존하고 있음. >> DIP위반
 
     private final MemberRepository memberRepository;
+
+    @Autowired //의존관계를 자동으로 등록해줌.(ac.getBean(MemberRepository.class가 들어간다고 보면 됨.)
     public MemberServiceImpl(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
