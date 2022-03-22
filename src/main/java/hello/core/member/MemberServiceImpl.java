@@ -1,10 +1,12 @@
 package hello.core.member;
 
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
+//@RequiredArgsConstructor
 public class MemberServiceImpl implements MemberService {
                                 //인터페이스 의존
     //private final MemberRepository memberRepository = new MemoryMemberRepository();
