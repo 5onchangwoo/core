@@ -27,7 +27,8 @@ public class OrderServiceImpl implements OrderService {
     private final MemberRepository memberRepository; //불변 특징을 갖고있음.
     private final DiscountPolicy discountPolicy; // 불변하도록 바꾸는 세터메서드를 넣지않도록 함.
     //final은 무조건 값이 있어야 함을 뜻.(불변)
-    
+
+    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository,
                             @MainDiscountPolicy DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
@@ -42,6 +43,7 @@ public class OrderServiceImpl implements OrderService {
      * 이를 관리해주는 설정 클래스를 따로 만들어야 함.
      * --> AppConfig
      **/
+
     /** 생성자 주입방식으로 구현체를 가져옴.
      * 따라서 할인정책, 멤버저장방법을 바꿔도 OrderServiceImpl은 변경되지 않음.
      * -->OCP위반 해결
