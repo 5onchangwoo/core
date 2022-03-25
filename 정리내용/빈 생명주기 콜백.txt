@@ -77,3 +77,5 @@
 >>>정리
 @PostConstruct, @PreDestory 애노테이션을 사용하자.
 + 외부라이브러리를 초기화, 종료해야 한다면 @Bean의 initMethod, destoryMethod를 사용하자.
+
+
